@@ -5,14 +5,16 @@ import axios from 'axios';
 const PlayerStats = () => {
   const { tag } = useParams();
   const [player, setPlayer] = useState(null);
+  const serverUrl = 'https://clash-of-clans-stats.onrender.com';
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/player/${tag}`)
+    axios.get(`${serverUrl}/player/${tag}`)
       .then((response) => setPlayer(response.data))
       .catch((error) => console.error(error));
   }, [tag]);
 
   if (!player) return <div>Loading...</div>;
+  document.title = `${player.name} | ${player.clan ? player.clan.name : ''}`;
 
   return (
     <div className="p-5 bg-white shadow rounded">

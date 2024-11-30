@@ -5,9 +5,10 @@ import axios from 'axios';
 const ClanStats = () => {
   const { tag } = useParams();
   const [clan, setClan] = useState(null);
+  const serverUrl = 'https://clash-of-clans-stats.onrender.com';
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/clan/${tag}`)
+    axios.get(`${serverUrl}/clan/${tag}`)
       .then((response) => setClan(response.data))
       .catch((error) => console.error(error));
   }, [tag]);
