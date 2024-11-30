@@ -4,11 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:5173', // Your frontend URL
-    methods: ['GET', 'POST'], // Allowed HTTP methods
-    credentials: true, // Allow cookies or authentication headers
-}));
+app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 6001;
